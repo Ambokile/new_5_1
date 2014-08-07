@@ -22,49 +22,28 @@ function onload(){
     }  
 	
 	function downloadFile(){
-		  alert();  
-       window.requestFileSystem(  
-                    LocalFileSystem.PERSISTENT, 0,  
-                    function onFileSystemSuccess(fileSystem) {  
-                    fileSystem.root.getFile(  
-                                "dummy.html", {create: true, exclusive: false},  
-                                function gotFileEntry(fileEntry){  
-                                var sPath = fileEntry.fullPath.replace("dummy.html","");  
-                                var fileTransfer = new FileTransfer();  
-                                fileEntry.remove();  
-                                fileTransfer.download(  
-                                           "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",  
-                                           sPath + "theFile.pdf",  
-                                           function(theFile) {
-											   alert("download complete: " + theFile.toURI());  
-                                           console.log("download complete: " + theFile.toURI());  
-                                           showLink(theFile.toURI());  
-                                           },  
-                                           function(error) {  
-                                           console.log("download error source " + error.source);  
-                                           console.log("download error target " + error.target);  
-                                           console.log("upload error code: " + error.code);  
-                                           }  
-                                           );  
-                                },  
-                                fail);  
-                    },  
-                    fail);  
-     }  
-	 
-function showLink(url){  
-       alert(url);  
-       var divEl = document.getElementById("deviceready");  
-       var aElem = document.createElement("a");  
-       aElem.setAttribute("target", "_blank");  
-       aElem.setAttribute("href", url);  
-       aElem.appendChild(document.createTextNode("Ready! Click To Open."))  
-       divEl.appendChild(aElem);  
-     }  
-     function fail(evt) {  
-       console.log(evt.target.error.code);  
-     }  
-	 
+		  var remoteFile = "http://fishpond.site88.net/files/Mary.jpg";
+                  var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/')+1);
+               window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+                          fileSystem.root.getFile(localFileName, {create: true, exclusive: false}, function(fileEntry) {
+                                       var localPath = fileEntry.fullPath;
+                                               if (device.platform === "Android" && localPath.indexOf("file://") === 0) {
+                                                         localPath = localPath.substring(7);
+                                                                          }
+                                                              var ft = new FileTransfer();
+                                                                     ft.download(remoteFile,
+                                                                     localPath, function(entry) {
+                                                                               var dwnldImg = document.getElementById("dwnldImg");
+                                                                                                    dwnldImg.src = entry.fullPath;
+                                                                                                      dwnldImg.style.visibility = "visible";
+                                                                                                        dwnldImg.style.display = "block";
+                                                                                                                    }, fail);
+                                                                                                                 }, fail);
+                                                                                                                     }, fail);
+                                }
+                                 function fail(error) {
+                                                  console.log(error.code);
+                                                        }
 	 
 function log_in_chat(){
 	
