@@ -35,7 +35,8 @@ function onload(){
                                 fileTransfer.download(  
                                            "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",  
                                            sPath + "theFile.pdf",  
-                                           function(theFile) {  
+                                           function(theFile) {
+											   alert("download complete: " + theFile.toURI());  
                                            console.log("download complete: " + theFile.toURI());  
                                            showLink(theFile.toURI());  
                                            },  
