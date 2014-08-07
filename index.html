@@ -13,6 +13,15 @@
 <script type="text/javascript" src="upload.js"></script>
 
 <script type="text/javascript">
+
+function onload(){
+	   document.addEventListener("deviceready", onDeviceReady, false);  
+	}
+	function onDeviceReady() {  
+      alert("Going to start download");  
+      
+    }  
+
 function log_in_chat(){
 	
 	    var user_name = document.getElementById("user").value;
@@ -55,7 +64,7 @@ xmlhttp.send();
 </script>
 
 </head>
-<body>
+<body onLoad="onload();">
 <div data-role="page" id="home" data-theme="b" style="height:100%;">
   <div data-role="content" style="background-color:transparent;" >
    

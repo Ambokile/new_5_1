@@ -51,6 +51,13 @@ permission on your app, which PhoneGap requires.
 <gap:plugin name="Example" />
 A list of available plugins are available at https://build.phonegap.com/docs/plugins
 -->
+     <plugin name="File" value="org.apache.cordova.FileUtils" />
+     <plugin name="FileTransfer" value="org.apache.cordova.FileTransfer" />
+	 <plugin name="File" value="CDVFile" />
+     <plugin name="FileTransfer" value="CDVFileTransfer" />
+	 No permissions are required.
+
+
 
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
