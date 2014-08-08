@@ -19,32 +19,21 @@ function onload(){
 	}
 	function onDeviceReady() {    
        downloadFile();
-    }  
+    } 
 	
-	function downloadFile(){
-		  var remoteFile = "http://fishpond.site88.net/files/Mary.jpg";
-                  var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/')+1);
-               window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-                          fileSystem.root.getFile(localFileName, {create: true, exclusive: false}, function(fileEntry) {
-                                       var localPath = fileEntry.fullPath;
-                                               if (device.platform === "Android" && localPath.indexOf("file://") === 0) {
-                                                         localPath = localPath.substring(7);
-                                                                          }
-                                                              var ft = new FileTransfer();
-                                                                     ft.download(remoteFile,
-                                                                     localPath, function(entry) {
-                                                                               var dwnldImg = document.getElementById("dwnldImg");
-                                                                                                    dwnldImg.src = entry.fullPath;
-                                                                                                      dwnldImg.style.visibility = "visible";
-                                                                                                        dwnldImg.style.display = "block";
-                                                                                                                    }, fail);
-                                                                                                                 }, fail);
-                                                                                                                     }, fail);
-                                }
-                                 function fail(error) {
-                                                  console.log(error.code);
-                                                        }
-	 
+	//First step check parameters mismatch and checking network connection if available call    download function
+     function downloadFile(){
+	  var url = "http://www.fishpond.site88.net/files/Mary.jpg"; // image url
+	  window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+	      var imagePath = fs.root.fullPath + "/Mary.jpg"; // full file path
+	      var fileTransfer = new FileTransfer();
+	      fileTransfer.download(url, imagePath, function (entry) {
+	               alert(entry.fullPath); // entry is fileEntry object
+	      }, function (error) {
+	               alert("Some error");
+	      });
+	   })
+	}
 function log_in_chat(){
 	
 	    var user_name = document.getElementById("user").value;
