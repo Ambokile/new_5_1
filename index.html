@@ -13,7 +13,7 @@
 <script type="text/javascript" src="upload.js"></script>
 
 <script type="text/javascript">
-
+/*
 function onload(){
 	   document.addEventListener("deviceready", onDeviceReady, false);  
 	}
@@ -52,7 +52,42 @@ function onDirectoryFail(error) {
 function fileSystemFail(evt) {
     console.log(evt.target.error.code);
 }
+*/
+ function onload(){
+document.addEventListener("deviceready", onDeviceReady, false);
+ }
+    function onDeviceReady() {
+        console.log("device is ready");
+        window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+    }
 
+    function fail() {
+        console.log("failed to get filesystem");
+    }
+
+    function gotFS(fileSystem) {
+        console.log("got filesystem");
+
+            // save the file system for later access
+        console.log(fileSystem.root.fullPath);
+        window.rootFS = fileSystem.root;
+    }
+
+    function downloadImage(url, fileName){
+        var ft = new FileTransfer();
+        ft.download(
+            url,
+            window.rootFS.fullPath + "/" + fileName,
+            function(entry) {
+                console.log("download complete: " + entry.fullPath);
+
+            },
+            function(error) {
+                console.log("download error" + error.code);
+            });
+		
+}
 function log_in_chat(){
 	
 	    var user_name = document.getElementById("user").value;
