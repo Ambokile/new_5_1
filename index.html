@@ -20,20 +20,34 @@ function onload(){
 	function onDeviceReady() {    
        downloadFile();
     } 
+	function downloadFile(){
+
+window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
+    function onFileSystemSuccess(fileSystem) {
+        fileSystem.root.getFile(
+        "dummy.html", {create: true, exclusive: false}, 
+        function gotFileEntry(fileEntry) {
+            var sPath = fileEntry.fullPath.replace("dummy.html","");
+            var fileTransfer = new FileTransfer();
+            fileEntry.remove();
+
+            fileTransfer.download(
+                "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
+                sPath + "theFile.pdf",
+                function(theFile) {
+                    alert("download complete: " + theFile.toURI());
+                    alert(theFile.toURI());
+                },
+                function(error) {
+                    alert("download error source " + error.source);
+                    console.log("download error target " + error.target);
+                    console.log("upload error code: " + error.code);
+                }
+            );
+        }, fail);
+    }, fail);
+};
 	
-	//First step check parameters mismatch and checking network connection if available call    download function
-     function downloadFile(){
-	  var url = "http://www.fishpond.site88.net/files/Mary.jpg"; // image url
-	  window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
-	      var imagePath = fs.root.fullPath + "/Mary.jpg"; // full file path
-	      var fileTransfer = new FileTransfer();
-	      fileTransfer.download(url, imagePath, function (entry) {
-	               alert(entry.fullPath); // entry is fileEntry object
-	      }, function (error) {
-	               alert("Some error");
-	      });
-	   })
-	}
 function log_in_chat(){
 	
 	    var user_name = document.getElementById("user").value;
