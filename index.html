@@ -80,11 +80,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
             url,
             window.rootFS.fullPath + "/" + fileName,
             function(entry) {
-                console.log("download complete: " + entry.fullPath);
+                alert("download complete: " + entry.fullPath);
 
             },
             function(error) {
-                console.log("download error" + error.code);
+                alert("download error" + error.code);
             });
 		
 }
