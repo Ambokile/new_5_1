@@ -18,22 +18,18 @@ function onload(){
 	   document.addEventListener("deviceready", onDeviceReady, false);  
 	}
 	function onDeviceReady() {    
-      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fsSuccess);
+      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, onDirectoryFail);
 
     } 
-  
-  function fsSuccess(fs){
-                if (fs.root.fullPath === 'file:///storage/sdcard0'){
-					alert(fs);
-                                  window.x = 'file:///storage/sdcard0';// change the path
-}
 	
    function fileSystemSuccess(fileSystem) {
     var directoryEntry = fileSystem.root; // to get root path to directory
     directoryEntry.getDirectory("dit_nb", {create: true, exclusive: false}, onDirectorySuccess, onDirectoryFail);
+    var rootdir = fileSystem.root;
+    var fp = rootdir.fullPath;
     var fileTransfer = new FileTransfer();
 	var uri = encodeURI("http://fishpond.site88.net/Mary.jpg");
-   fileTransfer.download("uri", x.fullPath + "/" + 'Mary.jpg',  
+   fileTransfer.download("uri", fp + "/" + 'Mary.jpg',  
         function(entry) {
             alert("download complete: " + entry.fullPath);
         },
@@ -52,7 +48,9 @@ function onDirectoryFail(error) {
     alert("Unable to create new directory: " + error.code);
 }
  
-
+function fileSystemFail(evt) {
+    console.log(evt.target.error.code);
+}
 
 function log_in_chat(){
 	
