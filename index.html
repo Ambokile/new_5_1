@@ -28,8 +28,7 @@ function onload(){
     var rootdir = fileSystem.root;
     var fp = rootdir.fullPath;
     var fileTransfer = new FileTransfer();
-	var uri = encodeURI("http://fishpond.site88.net/Mary.jpg");
-   fileTransfer.download("uri", fp + "/" + 'Mary.jpg',  
+   fileTransfer.download("http://fishpond.site88.net/Mary.jpg", fp + "/" + "Mary.jpg",  
         function(entry) {
             alert("download complete: " + entry.fullPath);
         },
