@@ -25,12 +25,12 @@ function onload(){
    function fileSystemSuccess(fileSystem) {
     var directoryEntry = fileSystem.root; // to get root path to directory
     directoryEntry.getDirectory("dit_nb", {create: true, exclusive: false}, onDirectorySuccess, onDirectoryFail);
-    var rootdir = fileSystem.root;
-    var fp = rootdir.fullPath;
-    fp = fp+"/Mary.jpg";
+    //var rootdir = fileSystem.root;
+   // var fp = rootdir.fullPath;
+   // fp = fp+"/Mary.jpg";
     var fileTransfer = new FileTransfer();
 	var uri = encodeURI("http://fishpond.site88.net/Mary.jpg");
-   fileTransfer.download("uri",fp,  
+   fileTransfer.download("uri", window.rootFS.fullPath + "/" + 'Mary.jpg',  
         function(entry) {
             alert("download complete: " + entry.fullPath);
         },
