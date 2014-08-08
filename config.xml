@@ -107,6 +107,13 @@
 <plugin name="File" value="CDVFile" />
 <plugin name="FileTransfer" value="CDVFileTransfer" />
 
+<!-- define network -->
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+<plugin name="NetworkStatus" value="org.apache.cordova.NetworkManager" />
+<plugin name="NetworkStatus" value="CDVConnection" />
+
 <!--Define access to external domains.-->
 
 <access /> <!-- a blank access tag denies access to all external resources. -->
