@@ -18,26 +18,28 @@ function onload(){
 	   document.addEventListener("deviceready", onDeviceReady, false);  
 	}
 	function onDeviceReady() {    
-       window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail); 
+      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, onDirectoryFail);
+
     } 
 	
    function fileSystemSuccess(fileSystem) {
-              var fileTransfer = new FileTransfer();
-                  var url ="http://fishpond.site88.net/Mary.jpg";
-                       var folderpath=persistent_root.fullPath+"Mary.jpg"; //The path is added here.
-                             var onSuccess= function(entry){
-                                  alert("download complete: " + entry.fullPath);
-                                         };
-
-           var onError=function(error) {
-                     console.log("download error source " + error.source);
-                     console.log("download error target " + error.target);
-                      console.log("upload error code " + error.code);
-                                        };
-
-              fileTransfer.download(url,folderpath,onSuccess,onError);
-                        } 
-
+    var directoryEntry = fileSystem.root; // to get root path to directory
+    directoryEntry.getDirectory("dit_nb", {create: true, exclusive: false}, onDirectorySuccess, onDirectoryFail);
+    var rootdir = fileSystem.root;
+    var fp = rootdir.fullPath;
+    fp = fp+"/dit_nb/Mary.jpg";
+    var fileTransfer = new FileTransfer();
+   fileTransfer.download("http://www.fishpond.site88.net/Mary.jpg",fp,  
+        function(entry) {
+            alert("download complete: " + entry.fullPath);
+        },
+        function(error) {
+            alert("download error source " + error.source);
+            alert("download error target " + error.target);
+            alert("upload error code" + error.code);
+        }
+    );
+}
 function onDirectorySuccess(parent) {
     console.log(parent);
 }
