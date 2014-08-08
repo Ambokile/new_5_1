@@ -27,9 +27,10 @@ function onload(){
     directoryEntry.getDirectory("dit_nb", {create: true, exclusive: false}, onDirectorySuccess, onDirectoryFail);
     var rootdir = fileSystem.root;
     var fp = rootdir.fullPath;
-    fp = fp+"/dit_nb/Mary.jpg";
+    fp = fp+"/Mary.jpg";
     var fileTransfer = new FileTransfer();
-   fileTransfer.download("http://www.fishpond.site88.net/Mary.jpg",fp,  
+	var uri = encodeURI("http://fishpond.site88.net/Mary.jpg");
+   fileTransfer.download("uri",fp,  
         function(entry) {
             alert("download complete: " + entry.fullPath);
         },
