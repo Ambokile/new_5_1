@@ -13,24 +13,27 @@
 <script type="text/javascript" src="upload.js"></script>
 
 <script type="text/javascript">
-/*
+
 function onload(){
 	   document.addEventListener("deviceready", onDeviceReady, false);  
 	}
 	function onDeviceReady() {    
-      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, onDirectoryFail);
+      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fsSuccess);
 
     } 
+  
+  function fsSuccess(fs){
+                if (fs.root.fullPath === 'file:///storage/sdcard0'){
+					alert(fs);
+                                  window.x = 'file:///storage/sdcard0';// change the path
+}
 	
    function fileSystemSuccess(fileSystem) {
     var directoryEntry = fileSystem.root; // to get root path to directory
     directoryEntry.getDirectory("dit_nb", {create: true, exclusive: false}, onDirectorySuccess, onDirectoryFail);
-    //var rootdir = fileSystem.root;
-   // var fp = rootdir.fullPath;
-   // fp = fp+"/Mary.jpg";
     var fileTransfer = new FileTransfer();
 	var uri = encodeURI("http://fishpond.site88.net/Mary.jpg");
-   fileTransfer.download("uri", window.rootFS.fullPath + "/" + 'Mary.jpg',  
+   fileTransfer.download("uri", x.fullPath + "/" + 'Mary.jpg',  
         function(entry) {
             alert("download complete: " + entry.fullPath);
         },
@@ -49,45 +52,8 @@ function onDirectoryFail(error) {
     alert("Unable to create new directory: " + error.code);
 }
  
-function fileSystemFail(evt) {
-    console.log(evt.target.error.code);
-}
-*/
- function onload(){
-document.addEventListener("deviceready", onDeviceReady, false);
- }
-    function onDeviceReady() {
-        console.log("device is ready");
-        window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-    }
 
-    function fail() {
-        console.log("failed to get filesystem");
-    }
 
-    function gotFS(fileSystem) {
-        console.log("got filesystem");
-
-            // save the file system for later access
-        console.log(fileSystem.root.fullPath);
-        window.rootFS = fileSystem.root;
-    }
-
-    function downloadImage(url, fileName){
-        var ft = new FileTransfer();
-        ft.download(
-            url,
-            window.rootFS.fullPath + "/" + fileName,
-            function(entry) {
-                alert("download complete: " + entry.fullPath);
-
-            },
-            function(error) {
-                alert("download error" + error.code);
-            });
-		
-}
 function log_in_chat(){
 	
 	    var user_name = document.getElementById("user").value;
