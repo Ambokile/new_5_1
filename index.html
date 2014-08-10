@@ -13,43 +13,32 @@
 <script type="text/javascript" src="upload.js"></script>
 
 <script type="text/javascript">
-
-function onload(){
-	   document.addEventListener("deviceready", onDeviceReady, false);  
-	}
-	function onDeviceReady() {    
-      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, onDirectoryFail);
-
-    } 
-	
-   function fileSystemSuccess(fileSystem) {
-    var directoryEntry = fileSystem.root; // to get root path to directory
-    directoryEntry.getDirectory("dit_nb", {create: true, exclusive: false}, onDirectorySuccess, onDirectoryFail);
-    var rootdir = fileSystem.root;
-    var fp = rootdir.fullPath;
-    var fileTransfer = new FileTransfer();
-   fileTransfer.download("http://fishpond.site88.net/Mary.jpg", fp + "dit_nb/",  
-        function(entry) {
-            alert("download complete: " + entry.fullPath);
-        },
-        function(error) {
-            alert("download error source " + error.source);
-            alert("download error target " + error.target);
-            alert("upload error code" + error.code);
+window.onload  = function(){
+    document.addEventListener("deviceready", onDeviceReady, false);
         }
-    );
-}
-function onDirectorySuccess(parent) {
-    console.log(parent);
-}
- 
-function onDirectoryFail(error) {
-    alert("Unable to create new directory: " + error.code);
-}
- 
-function fileSystemFail(evt) {
-    console.log(evt.target.error.code);
-}
+    function onDeviceReady() {
+        checkConnection();
+    }
+
+    function checkConnection() {
+        var networkState = navigator.network.connection.type;
+
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.NONE]     = 'No network connection';
+
+        alert('Connection type: ' + states[networkState]);
+		if(states[networkState] == 'No network connection' ){
+			     alert("no connection available, please check and try again");
+				  navigator.app.exitApp();
+			}
+    }
+
 
 function log_in_chat(){
 	
@@ -95,7 +84,7 @@ xmlhttp.send();
 </head>
 <body onLoad="onload();">
 <div data-role="page" id="home" data-theme="b" style="height:100%;">
-  <div data-role="content" style="background-color:transparent;" >
+  <div data-role="content" style="background-color:transparent;" data-theme="b" >
    
   <div style=" width:80%; height:100%;  background-color:transparent; margin-left:10%;" id ="fresh">
     <div style=" margin-top:30%; width:100%; background-color:transparent; text-align:left;">
