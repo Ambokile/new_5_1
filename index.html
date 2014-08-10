@@ -33,7 +33,6 @@
         states[Connection.CELL_4G]  = 'Cell 4G connection';
         states[Connection.NONE]     = 'No network connection';
 
-        alert('Connection type: ' + states[networkState]);
 		if (networkState == Connection.NONE){
 			     alert("no connection available, please check and try again");
 				  navigator.app.exitApp();
