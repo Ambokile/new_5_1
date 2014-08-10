@@ -13,14 +13,15 @@
 <script type="text/javascript" src="upload.js"></script>
 
 <script type="text/javascript">
-window.onload  = function(){
+ function onload(){
     document.addEventListener("deviceready", onDeviceReady, false);
         }
-    function onDeviceReady() {
+		
+ function onDeviceReady() {
         checkConnection();
     }
 
-    function checkConnection() {
+ function checkConnection() {
         var networkState = navigator.network.connection.type;
 
         var states = {};
@@ -33,7 +34,7 @@ window.onload  = function(){
         states[Connection.NONE]     = 'No network connection';
 
         alert('Connection type: ' + states[networkState]);
-		if(states[networkState] == 'No network connection' ){
+		if (networkState == Connection.NONE){
 			     alert("no connection available, please check and try again");
 				  navigator.app.exitApp();
 			}
