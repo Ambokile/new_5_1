@@ -17,7 +17,7 @@ function send_info(){
 	    var to = document.getElementById("select_body").selectedIndex;
 		 var to_bd = document.getElementsByName("bod")[to].value;
 	      var Inputfile = document.getElementById("upload_file");
-		      
+		  
 		
 	  var data = new FormData();
 	 if(from == "" || from == null){
@@ -25,12 +25,15 @@ function send_info(){
 		}
 	else if(msg == "" || msg == null){
 		    alert( "fill message field");
+			
 		}
+
 	else{ 
 		 data.append('inputfile',Inputfile.files[0]);
          data.append('msg',msg);
 		 data.append('from',from);
 		 data.append('ntb',to_bd);
+		 
 		var xmlhttp;
 		  document.getElementById("image_load").style.visibility = "visible";
 	if(window.XMLHttpRequest){
