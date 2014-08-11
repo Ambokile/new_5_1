@@ -53,10 +53,10 @@ function send_info(){
 			  var id_1 = xmlhttp.responseText.search("fail_filetype");
 			    if(id_1 != -1){
 					
-					   alert("The file format is not supported, please use ' .doc , .dot , .docx'");
+					   alert("The file format is not supported ");
 					}
 				else
-		             alert("failed publish");
+		             alert(xmlhttp.responseText);
 			  
 			  }
 		 }
