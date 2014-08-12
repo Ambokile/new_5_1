@@ -5,17 +5,11 @@
 <meta name="viewport" content="width=320; user-scalable=no" />
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
-
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
-<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
-<!--
 <link href="jquery-mobile/jquery.mobile-1.0a3.min.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="jquery.mobile.fixedToolbar.css"></script>
 <script type="text/javascript" charset="utf-8" src="phonegap.js"></script> 
 <script src="jquery-mobile/jquery-1.5.min.js" type="text/javascript"></script>
 <script src="jquery-mobile/jquery.mobile-1.0a3.min.js" type="text/javascript"></script>
--->
 <script type="text/javascript" src="upload.js"></script>
 
 <script type="text/javascript">
@@ -106,64 +100,52 @@ xmlhttp.send();
 </div>
 </div>
 
-<div data-role="page" data-theme="c" id="enter" >
-  <div data-role="header" id="head" data-position="fixed">
+<div data-role="page" data-theme="b" id="enter" >
+  <div data-role="header" id="head">
     <h1 style="text-align:left;">DIT NOTES BODY</h1>
   </div>
- <div data-role="content" style=" position:absolute; width:100%; top:4.5%; padding:0; background-color:transparent;">
+  <div data-role="content" style=" position:absolute; width:100%; top:6%; padding:0; background-color:transparent;">
     <ul data-role="listview" data-inset="true" style="">
-	  <ul data-role="listview" data-inset="true">
-	    <li style="padding:2%; font-size:12px; border-radius:0"><a href="#body_admin" style="font-size:14px;" onClick="grap_info('A','0');">
-        <img src="img/dit.jpg" width="81" height="100" alt="dit" longdesc="img/dit.jpg" style=" border:#000 thin none;">
-        <h3>Admission</h3>
-        <p style="">Dar es salaam institute of technology</p>
-        <p class="ui-li-aside">http://www.dit.ac.tz</p></a>
-      </li>
-      <li style="padding:2%;"><a href="#department" style="font-size:14px;">
-      <img src="img/department.jpg" width="81" height="100" alt="dit" longdesc="img/dit.jpg" style=" border:#000 thin none;">   <h3>Department</h3>
-        <p>Dar es salaam instute of technology</p>
-        <p class="ui-li-aside">dit</p></a>
+      <li style="padding:2%; font-size:12px; border-radius:0">
+        <h3><a href="#body_admin" style="font-size:14px;" onClick="grap_info('A','0');">Admission</a></h3>
+        <p style=""><img src="img/dit.jpg" width="81" height="100" alt="dit" longdesc="img/dit.jpg" style=" border:#000 thin none;">Dar es salaam institute of technology</p>
+        <p class="ui-li-aside">http://www.dit.ac.tz</p>
       </li>
       <li style="padding:2%;">
-      <a href="#body_DITSO" style="font-size:14px;"  onClick="grap_info('DI','1');">
-      <img src="img/lib.jpg" width="81" height="100" alt="dit" longdesc="img/dit.jpg" style=" border:#000 thin none;">
-        <h3>DITSO</h3>
-        <p>Dar es salaam instute of technology</p>
-        <p class="ui-li-aside">dit</p></a>
+        <h3><a href="#department" style="font-size:14px;">Department</a></h3>
+        <p><img src="img/department.jpg" width="81" height="100" alt="dit" longdesc="img/dit.jpg" style=" border:#000 thin none;">Dar es salaam instute of technology</p>
+        <p class="ui-li-aside">dit</p>
       </li>
       <li style="padding:2%;">
-      <a href="#body_lib" style="font-size:14px;"  onClick="grap_info('L','2');">
-      <img src="img/Tulips.jpg" width="91" height="100" alt="dit" longdesc="img/dit.jpg" style=" border:#000 thin none;">
-        <h3>DIT LIBRARY</h3>
-        <p>Dar es salaam instute of technology</p>
-        <p class="ui-li-aside">dit</p></a>
+        <h3><a href="#body_DITSO" style="font-size:14px;"  onClick="grap_info('DI','1');">DITSO</a></h3>
+        <p><img src="img/Tulips.jpg" width="91" height="100" alt="dit" longdesc="img/dit.jpg" style=" border:#000 thin none;">Dar es salaam instute of technology</p>
+        <p class="ui-li-aside">dit</p>
       </li>
       <li style="padding:2%;">
-      <a href="#body_clubs" style="font-size:14px;"  onClick="grap_info('C','3');">
-      <img src="img/club.jpg" width="91" height="100" alt="dit" longdesc="img/dit.jpg" style=" border:#000 thin none;">
-        <h3>Dit Clubs</h3>
-        <p>Dar es salaam instute of technology</p>
-        <p class="ui-li-aside">dit</p></a>
+        <h3><a href="#body_lib" style="font-size:14px;"  onClick="grap_info('L','2');">DIT LIBRARY</a></h3>
+        <p><img src="img/lib.jpg" width="81" height="100" alt="dit" longdesc="img/dit.jpg" style=" border:#000 thin none;">Dar es salaam instute of technology</p>
+        <p class="ui-li-aside">dit</p>
       </li>
       <li style="padding:2%;">
-      <a href="#body_publisher" style="font-size:14px;">
-      <img src="img/publish.jpg" width="71" height="90" alt="dit" longdesc="img/dit.jpg" style=" border:#000 thin none;">
-        <h3>Publish information</h3>
-        <p>Dar es salaam instute of technology</p>
-        <p class="ui-li-aside">dit</p></a>
+        <h3><a href="#body_clubs" style="font-size:14px;"  onClick="grap_info('C','3');">Dit Clubs</a></h3>
+        <p><img src="img/club.jpg" width="91" height="100" alt="dit" longdesc="img/dit.jpg" style=" border:#000 thin none;">Dar es salaam instute of technology</p>
+        <p class="ui-li-aside">dit</p>
+      </li>
+      <li style="padding:2%;">
+        <h3><a href="#body_publisher" style="font-size:14px;">Publish information</a></h3>
+        <p><img src="img/publish.jpg" width="71" height="90" alt="dit" longdesc="img/dit.jpg" style=" border:#000 thin none;">Dar es salaam instute of technology</p>
+        <p class="ui-li-aside">dit</p>
       </li>
       </li>
       <li style="padding:2%; border-radius:0" >
-      <a href="#body_about_dit" style="font-size:14px;"  onClick="grap_info('about_dit','4');">
-       <img src="img/dit_1.gif" width="71" height="90" alt="dit" longdesc="img/dit.jpg" style=" border:#000 thin none;">
-        <h3>About DIT</h3>
-        <p>Dar es salaam institute of technology</p>
-        <p class="ui-li-aside">dit</p></a>
+        <h3><a href="#body_about_dit" style="font-size:14px;"  onClick="grap_info('about_dit','4');">About DIT</a></h3>
+        <p><img src="img/dit_1.gif" width="71" height="90" alt="dit" longdesc="img/dit.jpg" style=" border:#000 thin none;">Dar es salaam institute of technology</p>
+        <p class="ui-li-aside">dit</p>
       </li>
-      </ul>
-	  
+    </ul>
+   
+     
   </div>
-	
   
 </div>
 <div data-role="page" id="department" style="" data-backbtn="true" data-back-btn-text="Back" data-theme="b">
